@@ -65,6 +65,7 @@ final class CCCEDICTReader {
 		while (read != ' ') {
 			sb.append((char)read);
 			read();
+			readCheck();
 		}
 		read();
 		return sb.toString();
