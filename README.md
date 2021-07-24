@@ -1,5 +1,5 @@
 # cc-cedict-parser
-An event-based Java parser for CC-CEDICT Chinese-English dictionary
+An InputStream-based Java parser for CC-CEDICT Chinese-English dictionary
 
 Usage example
 
