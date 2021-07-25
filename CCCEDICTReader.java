@@ -16,25 +16,29 @@ final class CCCEDICTReader {
 	public CCCEDICTReader(InputStreamReader isr) throws IOException {
 		this.isr = isr;
 		output = parse();
+		isr.close();
 	}
 	public CCCEDICTReader(String filePath) throws IOException {
 		isr = new InputStreamReader(new FileInputStream(filePath), StandardCharsets.UTF_8);
 		output = parse();
+		isr.close();
 	}
 	public CCCEDICTReader(File file) throws IOException {
 		isr = new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8);
 		output = parse();
+		isr.close();
 	}
 	
 	//Reader methods
 	private int read, line;
+	private boolean endLine;
 	private void read() throws IOException {
 		read = isr.read();
-		if (read == '\n' || read == -1)
-			line++;
+		endLine = read == '\n' || read == -1;
+		if (endLine) line++;
 	}
 	private void readCheck() {
-		if (read == '\n' || read == -1)
+		if (endLine)
 			throw new CCCEDICTParseException("Unexpected end of line: line " + line);
 	}
 	private List<CCCEDICTEntry> parse() throws IOException {
@@ -49,7 +53,7 @@ final class CCCEDICTReader {
 		return output;
 	}
 	private void skipLine() throws IOException {
-		while (read != '\n' && read != -1)
+		while (!endLine)
 			read();
 	}
 	private CCCEDICTEntry readItem() throws IOException {
@@ -97,7 +101,7 @@ final class CCCEDICTReader {
 		while (read != '/') {
 			sb.append((char)read);
 			read();
-			if (read == '\n' || read == -1)
+			if (endLine)
 				return null;
 			readCheck();
 		}
