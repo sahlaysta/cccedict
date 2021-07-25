@@ -86,7 +86,7 @@ final class CCCEDICTReader {
 		return sb.toString();
 	}
 	private List<String> readDefinitions() throws IOException {
-		read(); read(); //(two spaces after reading pronunciation)
+		read(); read(); //(skip two spaces after reading pronunciation)
 		List<String> output = new ArrayList<>();
 		String addition;
 		while ((addition = readDefinition()) != null)
