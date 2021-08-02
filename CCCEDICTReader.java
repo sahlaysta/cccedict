@@ -8,6 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+/** Parser of CC-CEDICT files */
 final class CCCEDICTReader {
 	public final List<CCCEDICTEntry> output;
 	private InputStreamReader isr;
