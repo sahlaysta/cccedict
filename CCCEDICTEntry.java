@@ -2,10 +2,15 @@ package com.github.sahlaysta.cccedict;
 
 import java.util.List;
 
+/** CC-CEDICT dictionary entry with traditional, simplified, pronunciation and definitions */
 public class CCCEDICTEntry {
+	/** The traditional-character Chinese form of this entry */
 	public String traditional;
+	/** The simplified-character Chinese form of this entry */
 	public String simplified;
+	/** The Pinyin pronunciation of this entry */
 	public String pronunciation;
+	/** The definitions of this entry */
 	public List<String> definitions;
 	
 	@Override
