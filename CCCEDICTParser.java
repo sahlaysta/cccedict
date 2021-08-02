@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
+/** Parser of CC-CEDICT files */
 public class CCCEDICTParser {
 	//Static parse method overloads
 	
