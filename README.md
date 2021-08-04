@@ -31,3 +31,12 @@ for (String definition: dictionary.get(entryIndex).definitions)
 */
 
 ```
+---
+Format Pinyin method
+```java
+int entryIndex = 738;
+String pinyin = CCCEDICTPinyin.toFormattedPinyin(dictionary.get(entryIndex));
+System.out.println(pinyin);
+
+// yī wǎng dǎ jìn
+```
