@@ -12,7 +12,7 @@ public final class CCCEDICTPinyin {
 		StringBuilder sb = new StringBuilder();
 		int i = 0;
 		for (String syllable: syllables) {
-			sb.append(formatPinyinSyllable(syllable, getToneOfPinyinSyllable(syllable)));
+			sb.append(formatPinyinSyllable(syllable));
 			if (i < syllables.length - 1)
 				sb.append(" ");
 			i++;
@@ -30,7 +30,8 @@ public final class CCCEDICTPinyin {
 		TONE_FIFTH = 5;
 	
 	/** Returns an accent-marked Pinyin syllable String from a CC-CEDICT format pinyin syllable */
-	private static final String formatPinyinSyllable(String pinyinSyllable, int tone) {
+	private static final String formatPinyinSyllable(String pinyinSyllable) {
+		int tone = getToneOfPinyinSyllable(pinyinSyllable);
 		switch (tone) {
 		case INVALID_PINYIN: return pinyinSyllable;
 		case TONE_FIFTH: {
@@ -94,8 +95,42 @@ public final class CCCEDICTPinyin {
 					return removeLastChar(pinyinSyllable.replace('I', diacriticize('I', tone)));
 				}
 			}
-			else { //U
+			else if (charSequenceContainsChar(pinyinSyllable, 'U')) {
 				return removeLastChar(pinyinSyllable.replace('U', diacriticize('U', tone)));
+			}
+			else switch (pinyinSyllable.charAt(0)) {
+			case 'r': {
+				switch (tone) {
+				case TONE_FIRST: return "r\u0304";
+				case TONE_SECOND: return "\u0155";
+				case TONE_THIRD: return "\u0159";
+				default: return "r\u0300";
+				}
+			}
+			case 'R': {
+				switch (tone) {
+				case TONE_FIRST: return "R\u0304";
+				case TONE_SECOND: return "\u0154";
+				case TONE_THIRD: return "\u0158";
+				default: return "R\u0300";
+				}
+			}
+			case 'm': {
+				switch (tone) {
+				case TONE_FIRST: return "m\u0304";
+				case TONE_SECOND: return "\u1E3f";
+				case TONE_THIRD: return "m\u030C";
+				default: return "m\u0300";
+				}
+			}
+			default: { //M
+				switch (tone) {
+				case TONE_FIRST: return "M\u0304";
+				case TONE_SECOND: return "\u1E3E";
+				case TONE_THIRD: return "M\u030C";
+				default: return "M\u0300";
+				}
+			}
 			}
 		}
 		}
