@@ -37,6 +37,13 @@ Format Pinyin method
 int entryIndex = 738;
 String pinyin = CCCEDICTPinyin.toFormattedPinyin(dictionary.get(entryIndex));
 System.out.println(pinyin);
-
 // yī wǎng dǎ jìn
+
+entryIndex = 3303;
+System.out.println(dictionary.get(entryIndex).pronunciation);
+System.out.println(CCCEDICTPinyin.toFormattedPinyin(dictionary.get(entryIndex)));
+/*
+* Zhong1 yang1 Ren2 min2 Zheng4 fu3 Zhu4 Xiang1 gang3 Te4 bie2 Xing2 zheng4 qu1 Lian2 luo4 Ban4 gong1 shi4
+* Zhōng yāng Rén mín Zhèng fǔ Zhù Xiāng gǎng Tè bié Xíng zhèng qū Lián luò Bàn gōng shì
+*/
 ```
