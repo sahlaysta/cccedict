@@ -52,9 +52,9 @@ public final class CCCEDICTPinyin {
 			}
 			else if (charSequenceContainsChar(pinyinSyllable, ':')) {
 				if (charSequenceContainsChar(pinyinSyllable, 'u')) {
-					return removeLastChar(pinyinSyllable.replace('u', diacriticize('ü', tone))).replace(":", "");
+					return removeLastChar(pinyinSyllable.replace("u:", Character.toString(diacriticize('ü', tone))));
 				} else {
-					return removeLastChar(pinyinSyllable.replace('U', diacriticize('Ü', tone))).replace(":", "");
+					return removeLastChar(pinyinSyllable.replace("U:", Character.toString(diacriticize('Ü', tone))));
 				}
 			}
 			else if (charSequenceContainsChar(pinyinSyllable, 'e')) {
