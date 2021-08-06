@@ -35,8 +35,8 @@ final class CCCEDICTReader {
 	private boolean endLine;
 	private void read() throws IOException {
 		read = isr.read();
-		endLine = read == '\n' || read == -1;
-		if (endLine) line++;
+		if ((endLine = (read == '\n' || read == -1)) == true)
+			line++;
 	}
 	private void readCheck() {
 		if (endLine)
