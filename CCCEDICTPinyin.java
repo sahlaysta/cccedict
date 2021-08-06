@@ -20,21 +20,12 @@ public final class CCCEDICTPinyin {
 		return sb.toString();
 	}
 	
-	/** Chinese tone enum */
-	private static final int
-		INVALID_PINYIN = -1,
-		TONE_FIRST = 1,
-		TONE_SECOND = 2,
-		TONE_THIRD = 3,
-		TONE_FOURTH = 4,
-		TONE_FIFTH = 5;
-	
 	/** Returns an accent-marked Pinyin syllable String from a CC-CEDICT format pinyin syllable */
 	private static final String formatPinyinSyllable(String pinyinSyllable) {
 		int tone = getToneOfPinyinSyllable(pinyinSyllable);
 		switch (tone) {
-		case INVALID_PINYIN: return pinyinSyllable;
-		case TONE_FIFTH: {
+		case -1: return pinyinSyllable;
+		case 5: {
 			if (charSequenceContainsChar(pinyinSyllable, ':')) {
 				if (charSequenceContainsChar(pinyinSyllable, 'u')) {
 					return removeLastChar(pinyinSyllable.replace("u:", "ü"));
@@ -101,33 +92,33 @@ public final class CCCEDICTPinyin {
 			else switch (pinyinSyllable.charAt(0)) {
 			case 'r': {
 				switch (tone) {
-				case TONE_FIRST: return "r\u0304";
-				case TONE_SECOND: return "\u0155";
-				case TONE_THIRD: return "\u0159";
+				case 1: return "r\u0304";
+				case 2: return "\u0155";
+				case 3: return "\u0159";
 				default: return "r\u0300";
 				}
 			}
 			case 'R': {
 				switch (tone) {
-				case TONE_FIRST: return "R\u0304";
-				case TONE_SECOND: return "\u0154";
-				case TONE_THIRD: return "\u0158";
+				case 1: return "R\u0304";
+				case 2: return "\u0154";
+				case 3: return "\u0158";
 				default: return "R\u0300";
 				}
 			}
 			case 'm': {
 				switch (tone) {
-				case TONE_FIRST: return "m\u0304";
-				case TONE_SECOND: return "\u1E3f";
-				case TONE_THIRD: return "m\u030C";
+				case 1: return "m\u0304";
+				case 2: return "\u1E3f";
+				case 3: return "m\u030C";
 				default: return "m\u0300";
 				}
 			}
 			default: { //M
 				switch (tone) {
-				case TONE_FIRST: return "M\u0304";
-				case TONE_SECOND: return "\u1E3E";
-				case TONE_THIRD: return "M\u030C";
+				case 1: return "M\u0304";
+				case 2: return "\u1E3E";
+				case 3: return "M\u030C";
 				default: return "M\u0300";
 				}
 			}
@@ -157,115 +148,115 @@ public final class CCCEDICTPinyin {
 		switch (ch) {
 		case 'a': {
 			switch (tone) {
-			case TONE_FIRST: return 257;
-			case TONE_SECOND: return 'á';
-			case TONE_THIRD: return 462;
+			case 1: return 257;
+			case 2: return 'á';
+			case 3: return 462;
 			default: return 'à';
 			}
 		}
 		case 'e': {
 			switch (tone) {
-			case TONE_FIRST: return 275;
-			case TONE_SECOND: return 'é';
-			case TONE_THIRD: return 283;
+			case 1: return 275;
+			case 2: return 'é';
+			case 3: return 283;
 			default: return 'è';
 			}
 		}
 		case 'i': {
 			switch (tone) {
-			case TONE_FIRST: return 299;
-			case TONE_SECOND: return 'í';
-			case TONE_THIRD: return 464;
+			case 1: return 299;
+			case 2: return 'í';
+			case 3: return 464;
 			default: return 'ì';
 			}
 		}
 		case 'o': {
 			switch (tone) {
-			case TONE_FIRST: return 333;
-			case TONE_SECOND: return 'ó';
-			case TONE_THIRD: return 466;
+			case 1: return 333;
+			case 2: return 'ó';
+			case 3: return 466;
 			default: return 'ò';
 			}
 		}
 		case 'u': {
 			switch (tone) {
-			case TONE_FIRST: return 363;
-			case TONE_SECOND: return 'ú';
-			case TONE_THIRD: return 468;
+			case 1: return 363;
+			case 2: return 'ú';
+			case 3: return 468;
 			default: return 'ù';
 			}
 		}
 		case 'ü': {
 			switch (tone) {
-			case TONE_FIRST: return 470;
-			case TONE_SECOND: return 472;
-			case TONE_THIRD: return 474;
+			case 1: return 470;
+			case 2: return 472;
+			case 3: return 474;
 			default: return 476;
 			}
 		}
 		case 'A': {
 			switch (tone) {
-			case TONE_FIRST: return 256;
-			case TONE_SECOND: return 'Á';
-			case TONE_THIRD: return 461;
+			case 1: return 256;
+			case 2: return 'Á';
+			case 3: return 461;
 			default: return 'À';
 			}
 		}
 		case 'E': {
 			switch (tone) {
-			case TONE_FIRST: return 274;
-			case TONE_SECOND: return 'É';
-			case TONE_THIRD: return 282;
+			case 1: return 274;
+			case 2: return 'É';
+			case 3: return 282;
 			default: return 'È';
 			}
 		}
 		case 'I': {
 			switch (tone) {
-			case TONE_FIRST: return 298;
-			case TONE_SECOND: return 'Í';
-			case TONE_THIRD: return 463;
+			case 1: return 298;
+			case 2: return 'Í';
+			case 3: return 463;
 			default: return 'Ì';
 			}
 		}
 		case 'O': {
 			switch (tone) {
-			case TONE_FIRST: return 332;
-			case TONE_SECOND: return 'Ó';
-			case TONE_THIRD: return 465;
+			case 1: return 332;
+			case 2: return 'Ó';
+			case 3: return 465;
 			default: return 'Ò';
 			}
 		}
 		case 'U': {
 			switch (tone) {
-			case TONE_FIRST: return 362;
-			case TONE_SECOND: return 'Ú';
-			case TONE_THIRD: return 467;
+			case 1: return 362;
+			case 2: return 'Ú';
+			case 3: return 467;
 			default: return 'Ù';
 			}
 		}
 		default: { //Ü
 			switch (tone) {
-			case TONE_FIRST: return 469;
-			case TONE_SECOND: return 471;
-			case TONE_THIRD: return 473;
+			case 1: return 469;
+			case 2: return 471;
+			case 3: return 473;
 			default: return 475;
 			}
 		}
 		}
 	}
 	
-	/** Identify the tone of a singular pinyin syllable. Example: "kuang2" = TONE_SECOND */
+	/** Identify the tone of a singular pinyin syllable. Example: "kuang2" = 2 */
 	private static final int getToneOfPinyinSyllable(CharSequence pinyinSyllable) {
 		if (isValidPinyinSyllable(pinyinSyllable)) {
 			switch (pinyinSyllable.charAt(pinyinSyllable.length() - 1)) {
-			case '1': return TONE_FIRST;
-			case '2': return TONE_SECOND;
-			case '3': return TONE_THIRD;
-			case '4': return TONE_FOURTH;
-			default: return TONE_FIFTH;
+			case '1': return 1;
+			case '2': return 2;
+			case '3': return 3;
+			case '4': return 4;
+			default: return 5;
 			}
 		}
-		else return INVALID_PINYIN;
+		else return -1;
 	}
 
 	/** Returns true if a singular Pinyin syllable is valid for CC-CEDICT. Example: "kuang3" = true. "ohm7" = false */
