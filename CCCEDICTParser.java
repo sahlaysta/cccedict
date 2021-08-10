@@ -2,16 +2,15 @@ package com.github.sahlaysta.cccedict;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.InputStream;
 import java.util.List;
 
 /** Parser of CC-CEDICT files */
 public class CCCEDICTParser {
-	//Static parse method overloads
-	
+
 	/** Parses a List of CC-CEDICT Entries from a CC-CEDICT file */
-	public static List<CCCEDICTEntry> parse(InputStreamReader isr) throws IOException {
-		return new CCCEDICTReader(isr).output;
+	public static List<CCCEDICTEntry> parse(InputStream is) throws IOException {
+		return new CCCEDICTReader(is).output;
 	}
 	
 	/** Parses a List of CC-CEDICT Entries from a CC-CEDICT file */
