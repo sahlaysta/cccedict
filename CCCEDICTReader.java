@@ -1,41 +1,42 @@
 package com.github.sahlaysta.cccedict;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 /** Parser and reader of CC-CEDICT files */
 final class CCCEDICTReader {
 	public final List<CCCEDICTEntry> output;
-	private InputStreamReader isr;
+	private BufferedReader br;
 	
 	//Constructors
-	public CCCEDICTReader(InputStreamReader isr) throws IOException {
-		this.isr = isr;
+	public CCCEDICTReader(InputStream is) throws IOException {
+		this.br = new BufferedReader(new InputStreamReader(is));
 		output = parse();
-		isr.close();
+		br.close();
 	}
 	public CCCEDICTReader(String filePath) throws IOException {
-		isr = new InputStreamReader(new FileInputStream(filePath), StandardCharsets.UTF_8);
+		br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "UTF-8"));
 		output = parse();
-		isr.close();
+		br.close();
 	}
 	public CCCEDICTReader(File file) throws IOException {
-		isr = new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8);
+		br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));
 		output = parse();
-		isr.close();
+		br.close();
 	}
 	
 	//Reader methods
 	private int read, line;
 	private boolean endLine;
 	private void read() throws IOException {
-		read = isr.read();
-		if ((endLine = (read == '\n' || read == -1)) == true)
+		read = br.read();
+		if ((endLine = (read == '\n' || read == -1)))
 			line++;
 	}
 	private void readCheck() {
