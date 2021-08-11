@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,17 +17,17 @@ final class CCCEDICTReader {
 	
 	//Constructors
 	public CCCEDICTReader(InputStream is) throws IOException {
-		this.br = new BufferedReader(new InputStreamReader(is));
+		this.br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
 		output = parse();
 		br.close();
 	}
 	public CCCEDICTReader(String filePath) throws IOException {
-		br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "UTF-8"));
+		br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), StandardCharsets.UTF_8));
 		output = parse();
 		br.close();
 	}
 	public CCCEDICTReader(File file) throws IOException {
-		br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));
+		br = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8));
 		output = parse();
 		br.close();
 	}
