@@ -9,7 +9,7 @@ import com.github.sahlaysta.cccedict.CCCEDICTParser;
 
 List<CCCEDICTEntry> dictionary = null;
 try {
-  dictionary = CCCEDICTParser.parse("C:\\cedict_ts.u8");
+  dictionary = CCCEDICTParser.parse(new java.io.File("C:\\cedict_ts.u8"));
 } catch (IOException e) {
   e.printStackTrace();
 }
