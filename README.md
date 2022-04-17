@@ -1,3 +1,6 @@
+Outdated library. Check out my new version: https://github.com/sahlaysta/cccedictreader
+<hr>
+
 # cc-cedict-parser
 Java parser for CC-CEDICT Chinese-English dictionary
 
